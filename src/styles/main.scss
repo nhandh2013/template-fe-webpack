@@ -1,6 +1,8 @@
-body {
-  background: red;
-}
-.test {
-  background: pink;
-}
+@charset "UTF-8";
+@import "./variables";
+@import "./fonts";
+
+//Import Blocks
+@import "common/header";
+@import "common/footer";
+@import "blocks/block-1";
