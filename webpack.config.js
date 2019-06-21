@@ -25,6 +25,13 @@ module.exports = function(env, argv) {
     module: {
       rules: [
         {
+          test: /\.js$/,
+          exclude: /node_modules/,
+          use: {
+            loader: "babel-loader"
+          }
+        },
+        {
           test: /\.pug$/,
           use: [
             {
