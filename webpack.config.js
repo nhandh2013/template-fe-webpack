@@ -1,5 +1,4 @@
 const path= require('path');
-// const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
@@ -15,7 +14,11 @@ module.exports = {
   devServer: {
     hot: true,
     open: true,
-    port: 3001
+    port: 3001,
+    watchContentBase: true,
+    watchOptions: {
+      ignored: /node_modules/
+    }
   },
   module: {
     rules: [
@@ -48,6 +51,6 @@ module.exports = {
     new ExtractTextPlugin({
       filename: '[hash].bundle.css',
       allChunks: true,
-    })
+    }),
   ]
 };
