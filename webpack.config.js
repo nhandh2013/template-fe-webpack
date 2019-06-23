@@ -2,8 +2,9 @@ const path= require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
-module.exports = function(env, argv) {
+module.exports = (env, argv) => {
   const isProduction = argv.mode === 'production';
   return {
     name: 'Template Webpack',
@@ -11,7 +12,7 @@ module.exports = function(env, argv) {
     entry: ['./src/scripts/main.js','./src/styles/main.scss' ],
     output: {
       path: path.resolve(__dirname, 'dist'),
-      filename: `${isProduction ? [hash] + '.' : ''}bundle.js`
+      filename: `${isProduction ? '[hash]' + '.' : ''}bundle.js`
     },
     devServer: {
       hot: true,
@@ -21,6 +22,11 @@ module.exports = function(env, argv) {
       watchOptions: {
         ignored: /node_modules/
       }
+    },
+    optimization: {
+      minimizer: [
+        new UglifyJsPlugin()
+      ],
     },
     module: {
       rules: [
@@ -66,7 +72,7 @@ module.exports = function(env, argv) {
         inject: true,
       }),
       new ExtractTextPlugin({
-        filename: `${isProduction ? [hash] + '.' : ''}bundle.css`,
+        filename: `${isProduction ? '[hash]' + '.' : ''}bundle.css`,
         allChunks: true,
       }),
     ]

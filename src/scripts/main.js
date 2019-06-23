@@ -1,1 +1,2 @@
-console.log('webpack');
+let test = 'hello';
+console.log(test)
