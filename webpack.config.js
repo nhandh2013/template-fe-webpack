@@ -25,17 +25,27 @@ module.exports = (env, argv) => {
     },
     optimization: {
       minimizer: [
-        new UglifyJsPlugin()
+        new UglifyJsPlugin({
+          cache: true,
+          parallel: true,
+          sourceMap: true 
+        })
       ],
     },
     module: {
       rules: [
         {
           test: /\.js$/,
+          enforce: 'pre',
           exclude: /node_modules/,
-          use: {
-            loader: "babel-loader"
-          }
+          use: [
+            {
+              loader: "babel-loader"
+            },
+            {
+              loader: "jshint-loader"
+            }
+          ]
         },
         {
           test: /\.pug$/,

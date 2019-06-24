@@ -1,2 +1,3 @@
-let test = 'hello';
-console.log(test)
+//test
+const test = 'hello';
+console.log(test);
