@@ -59,10 +59,26 @@ module.exports = (env, argv) => {
           ],
         },
         {
-          test: /\.scss$/,
+          test: /\.(css|scss)$/,
           use: ExtractTextPlugin.extract({
             fallback: 'style-loader',
-            use: ['css-loader', 'sass-loader']
+            use: [
+              {
+                loader: 'css-loader?-url'
+              },
+              {
+                loader: 'postcss-loader',
+                options: {
+                  sourceMap: true,
+                  config: {
+                    path: path.resolve(__dirname, 'postcss.config.js'),
+                  },
+                },
+              },
+              {
+                loader: 'sass-loader'
+              }
+            ]
           })
         },
         {
