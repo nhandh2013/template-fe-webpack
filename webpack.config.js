@@ -12,7 +12,8 @@ module.exports = (env, argv) => {
     entry: ['./src/scripts/main.js','./src/styles/main.scss' ],
     output: {
       path: path.resolve(__dirname, 'dist'),
-      filename: `${isProduction ? '[hash]' + '.' : ''}bundle.js`
+      filename: `${isProduction ? '[hash]' + '.' : ''}bundle.js`,
+      publicPath: '/'
     },
     devServer: {
       hot: true,
@@ -34,6 +35,12 @@ module.exports = (env, argv) => {
     },
     module: {
       rules: [
+        {
+          test: /\.html$/,
+          use: [ {
+            loader: 'html-loader'
+          }],
+        },
         {
           test: /\.js$/,
           enforce: 'pre',
@@ -85,16 +92,26 @@ module.exports = (env, argv) => {
           test: /\.(png|svg|jpg|gif)$/,
           use: [
             {
-              loader: 'file-loader'
+              loader: 'file-loader',
+              options: {
+                // context: path.resolve(__dirname, '../src/assets/'),
+                name: '[name].[ext]',
+                outputPath: 'images/',
+              },
             }
           ]
         }
       ]
     },
+    resolve: {
+      alias: {
+        images: path.resolve(__dirname, 'src/assets/images/')
+      }
+    },
     plugins: [
       new CleanWebpackPlugin(),
       new HtmlWebPackPlugin({
-        template: './src/views/index.pug',
+        template: './src/views/index.html',
         inject: true,
       }),
       new ExtractTextPlugin({
