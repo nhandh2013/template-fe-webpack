@@ -47,10 +47,10 @@ module.exports = (env, argv) => {
           exclude: /node_modules/,
           use: [
             {
-              loader: "babel-loader"
+              loader: 'babel-loader'
             },
             {
-              loader: "jshint-loader"
+              loader: 'jshint-loader'
             }
           ]
         },
@@ -58,10 +58,13 @@ module.exports = (env, argv) => {
           test: /\.pug$/,
           use: [
             {
-              loader: "pug-loader",
-              query: {
-                pretty: false
-              }
+              loader: 'html-loader'
+            },
+            {
+              loader: 'pug-html-loader',
+              options: {
+                pretty: true
+              },
             }
           ],
         },
@@ -94,9 +97,10 @@ module.exports = (env, argv) => {
             {
               loader: 'file-loader',
               options: {
-                // context: path.resolve(__dirname, '../src/assets/'),
+                context: path.resolve(__dirname, '../src/assets/'),
                 name: '[name].[ext]',
-                outputPath: 'images/',
+                publicPath: './images',
+                outputPath: 'images',
               },
             }
           ]
@@ -111,7 +115,7 @@ module.exports = (env, argv) => {
     plugins: [
       new CleanWebpackPlugin(),
       new HtmlWebPackPlugin({
-        template: './src/views/index.html',
+        template: './src/views/index.pug',
         inject: true,
       }),
       new ExtractTextPlugin({
