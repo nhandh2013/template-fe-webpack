@@ -18,7 +18,7 @@ module.exports = (env, argv) => {
     devServer: {
       hot: true,
       open: true,
-      port: 3001,
+      port: 3002,
       watchContentBase: true,
       watchOptions: {
         ignored: /node_modules/
@@ -29,7 +29,7 @@ module.exports = (env, argv) => {
         new UglifyJsPlugin({
           cache: true,
           parallel: true,
-          sourceMap: true 
+          sourceMap: true
         })
       ],
     },
@@ -69,12 +69,23 @@ module.exports = (env, argv) => {
           ],
         },
         {
-          test: /\.(css|scss)$/,
+          test: /\.css$/,
           use: ExtractTextPlugin.extract({
             fallback: 'style-loader',
             use: [
               {
-                loader: 'css-loader?-url'
+                loader: 'css-loader'
+              }
+            ]
+          })
+        },
+        {
+          test: /\.scss$/,
+          use: ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            use: [
+              {
+                loader: 'css-loader'
               },
               {
                 loader: 'postcss-loader',
