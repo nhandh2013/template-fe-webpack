@@ -5,9 +5,9 @@
   "main": "webpack.common.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "develop": "webpack-dev-server --mode development --config webpack.dev.js",
-    "build:dev": "webpack --config --mode development webpack.dev.js",
-    "build:prod": "webpack --config --mode production webpack.prod.js"
+    "develop": "webpack-dev-server --config webpack.dev.js",
+    "build:dev": "webpack --config webpack.dev.js",
+    "build:prod": "webpack --config webpack.prod.js"
   },
   "author": "",
   "license": "ISC",
@@ -18,7 +18,6 @@
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.0.0",
-    "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^4.0.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
@@ -26,6 +25,7 @@
     "jshint-loader": "^0.8.4",
     "mini-css-extract-plugin": "^0.7.0",
     "node-sass": "^4.12.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
     "postcss-loader": "^3.0.0",
     "pug": "^2.0.4",
     "pug-html-loader": "^1.1.5",

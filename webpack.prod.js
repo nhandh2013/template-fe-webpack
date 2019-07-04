@@ -1,7 +1,8 @@
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = merge(common, {
   mode: 'production',
@@ -37,9 +38,10 @@ module.exports = merge(common, {
     ]
   },
   plugins: [
-    new ExtractTextPlugin({
+    new MiniCssExtractPlugin({
       filename: '[hash].bundle.css',
       allChunks: true,
     }),
+    new OptimizeCssAssetsPlugin()
   ]
 });

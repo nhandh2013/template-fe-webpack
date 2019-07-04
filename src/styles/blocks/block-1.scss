@@ -1,6 +1,19 @@
+// main {
+//   background: url("../assets/images/bg.png");
+//   padding: 20px;
+//   min-height: 500px;
+//   border: 1px solid $color-1;
+// }
 main {
-  background: url("../assets/images/bg.png");
-  padding: 20px;
-  min-height: 500px;
-  border: 1px solid $color-1;
+  background: red;
+}
+body {
+  color: blue;
+}
+p {
+  color: red;
+}
+
+body {
+  color: blue;
 }
