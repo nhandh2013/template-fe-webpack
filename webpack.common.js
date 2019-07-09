@@ -85,6 +85,7 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
+              context: path.resolve(__dirname, '../src/fonts/'),
               name: '[name].[ext]',
               publicPath: './fonts',
               outputPath: 'fonts'
