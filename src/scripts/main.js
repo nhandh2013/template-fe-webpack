@@ -1,3 +1,3 @@
-//test
-const test = 'hello';
-console.log(test);
+$(function () {
+  console.log('hello Jquery');
+});

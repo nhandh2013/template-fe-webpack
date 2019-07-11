@@ -11,7 +11,7 @@ module.exports = merge(common, {
   devServer: {
     hot: true,
     open: true,
-    port: 3002,
+    port: 3003,
     watchContentBase: true,
     watchOptions: {
       ignored: /node_modules/
