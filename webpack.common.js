@@ -27,9 +27,9 @@ module.exports = {
           {
             loader: 'babel-loader'
           },
-          {
-            loader: 'jshint-loader'
-          }
+          // {
+          //   loader: 'jshint-loader'
+          // }
         ]
       },
       {
@@ -72,10 +72,8 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              context: path.resolve(__dirname, '../src/assets/'),
               name: '[name].[ext]',
-              publicPath: './images',
-              outputPath: 'images',
+              outputPath: './images',
             },
           }
         ]
@@ -86,10 +84,8 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              context: path.resolve(__dirname, '../src/fonts/'),
               name: '[name].[ext]',
-              publicPath: './fonts',
-              outputPath: 'fonts'
+              outputPath: './fonts'
             }
           }
         ]

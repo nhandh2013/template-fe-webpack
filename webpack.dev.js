@@ -1,3 +1,4 @@
+const path = require('path');
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -12,11 +13,10 @@ module.exports = merge(common, {
     hot: true,
     open: true,
     port: 3003,
-    watchContentBase: true,
     watchOptions: {
       ignored: /node_modules/
     },
-    contentBase: './dist'
+    contentBase: path.resolve(__dirname, 'dist'),
   },
   module: {
     rules: [
