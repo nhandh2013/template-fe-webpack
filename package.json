@@ -5,9 +5,9 @@
   "main": "webpack.common.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "develop": "webpack-dev-server --config webpack.dev.js",
-    "build:dev": "webpack --config webpack.dev.js",
-    "build:prod": "webpack --config webpack.prod.js"
+    "develop": "webpack-dev-server --config webpack.dev.js --progress --colors",
+    "build:dev": "webpack --config webpack.dev.js --progress --colors",
+    "build:prod": "webpack --config webpack.prod.js --progress --colors"
   },
   "author": "",
   "license": "ISC",
