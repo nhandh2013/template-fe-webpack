@@ -27,9 +27,13 @@ module.exports = {
           {
             loader: 'babel-loader'
           },
-          // {
-          //   loader: 'jshint-loader'
-          // }
+          {
+            loader: 'jshint-loader',
+            options: {
+              emitErrors: true,
+              failOnHint: true
+            }
+          }
         ]
       },
       {
