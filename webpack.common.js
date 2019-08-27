@@ -3,6 +3,22 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
+const fs = require('fs');
+
+let templates = [];
+let dir = path.resolve(__dirname, 'src/views');
+let files = fs.readdirSync(dir);
+files.forEach(file => {
+  if (file.match(/\.pug$/)) {
+    let filename = file.substring(0, file.length - 4);
+    templates.push(
+      new HtmlWebPackPlugin({
+        template: dir + '/' + filename + '.pug',
+        filename: filename + '.html'
+      })
+    );
+  }
+});
 
 module.exports = {
   entry: {
@@ -98,10 +114,7 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new HtmlWebPackPlugin({
-      template: './src/views/index.pug',
-      inject: true,
-    }),
+    ...templates,
     new webpack.ProvidePlugin({
       $: "jquery",
       jQuery: "jquery",
